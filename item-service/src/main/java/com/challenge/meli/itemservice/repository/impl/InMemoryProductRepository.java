@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 
 import java.io.InputStream;
 import java.util.*;
-import java.util.concurrent.atomic.AtomicLong;
 
 @Repository
 public class InMemoryProductRepository implements ProductRepository {
