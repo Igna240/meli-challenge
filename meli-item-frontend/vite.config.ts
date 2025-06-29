@@ -1,11 +1,24 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vitest/config';
+
 
 export default defineConfig({
-  plugins: [react()],
-  server: {
-    proxy: {
-      '/api': 'http://localhost:8080', // Cambia el puerto si tu backend usa otro
+  test: {
+    environment: 'jsdom', // Necesario para React
+    coverage: {
+      provider: 'v8', // Por defecto
+      reporter: ['text', 'html'],
+      include: [
+        'src/components/**/*.tsx'
+      ],
+      exclude: [
+        'src/main.tsx',
+        'src/App.tsx',
+        'src/types/**',
+        'src/components/icons/**',
+        '**/*.test.*'
+      ]
     },
-  },
+    globals: true, // para no tener que importar describe/it/expect
+    setupFiles: './src/setupTests.ts'
+    },
 });
