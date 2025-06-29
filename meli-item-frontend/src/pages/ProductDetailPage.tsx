@@ -1,5 +1,27 @@
 import { useState, useEffect } from 'react';
-import type { Product } from '../types/Product.ts';
+
+
+interface Product {
+  id: string;
+  title: string;
+  price: number;
+  installments: {
+    quantity: number;
+    amount: number;
+    hasInterest: boolean;
+  };
+  shipping: {
+    free: boolean;
+    deliveryTime: string;
+  };
+  stock: number;
+  condition: string;
+  soldQuantity: number;
+  seller: string;
+  images: string[];
+  isBestSeller: boolean;
+  hasFreeReturn: boolean;
+}
 
 // --- Iconos SVG para no tener dependencias externas ---
 // Puedes reemplazarlos por una librería como lucide-react si lo prefieres
@@ -41,12 +63,12 @@ const mockProduct = {
   soldQuantity: 1258,
   seller: 'Samsung Oficial',
   images: [
-    'https://placehold.co/500x500/9C27B0/FFFFFF?text=Principal',
-    'https://placehold.co/500x500/3F51B5/FFFFFF?text=Dorso',
-    'https://placehold.co/500x500/009688/FFFFFF?text=Lateral+1',
-    'https://placehold.co/500x500/FF5722/FFFFFF?text=Lateral+2',
-    'https://placehold.co/500x500/795548/FFFFFF?text=Cámara',
-    'https://placehold.co/500x500/607D8B/FFFFFF?text=Pantalla',
+    'https://http2.mlstatic.com/D_NQ_NP_2X_800035-MLA81367078349_122024-F.webp',
+    'https://http2.mlstatic.com/D_NQ_NP_2X_832248-MLA81366749957_122024-F.webp',
+    'https://http2.mlstatic.com/D_NQ_NP_2X_621964-MLA81364948571_122024-F.webp',
+    'https://http2.mlstatic.com/D_NQ_NP_2X_777643-MLA75395342152_042024-F.webp',
+    'https://http2.mlstatic.com/D_NQ_NP_2X_725539-MLA80825742603_112024-F.webp',
+    'https://http2.mlstatic.com/D_NQ_NP_2X_780712-MLA81099188364_122024-F.webp',
   ],
   isBestSeller: true,
   hasFreeReturn: true,
@@ -56,7 +78,7 @@ const mockProduct = {
 // --- Componente Principal ---
 export default function ProductDetailPage() {
   // Estado para manejar el producto. Inicialmente nulo hasta que "cargan" los datos.
-  const [product, setProduct] = useState(null);
+  const [product, setProduct] = useState<Product | null>(null);
   // Estado para la imagen seleccionada en la galería
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   // Estado para el selector de cantidad
@@ -74,13 +96,13 @@ export default function ProductDetailPage() {
   }, []); // El array vacío asegura que esto se ejecute solo una vez
 
   // Función para formatear el precio a moneda Chilena (CLP)
-  const formatPrice = (value) => {
-    return new Intl.NumberFormat('es-CL', {
-      style: 'currency',
-      currency: 'CLP',
-      minimumFractionDigits: 0,
-    }).format(value);
-  };
+ const formatPrice = (value: number) => {
+  return new Intl.NumberFormat('es-CL', {
+    style: 'currency',
+    currency: 'CLP',
+    minimumFractionDigits: 0,
+  }).format(value);
+};
 
   // Renderiza un esqueleto (skeleton) mientras cargan los datos
   if (!product) {
@@ -129,7 +151,7 @@ export default function ProductDetailPage() {
               <div className="flex flex-col-reverse sm:flex-row gap-4">
                 {/* Thumbnails (imágenes pequeñas) */}
                 <div className="flex sm:flex-col gap-2 justify-center sm:justify-start">
-                  {product.images.slice(0, 6).map((img, index) => (
+                  {product.images.slice(0, 6).map((img: string, index:number) => (
                     <div
                       key={index}
                       className={`w-12 h-12 sm:w-16 sm:h-16 border-2 rounded-md cursor-pointer flex items-center justify-center overflow-hidden ${selectedImageIndex === index ? 'border-blue-500' : 'border-gray-300'}`}
