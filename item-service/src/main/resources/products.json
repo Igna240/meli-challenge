@@ -1,0 +1,30 @@
+[
+  {
+    "id": "MLC34729758",
+    "title": "Teléfono Celular Samsung Galaxy A55 5g 128 Gb Azul Oscuro",
+    "price": 299990,
+    "installments": {
+      "quantity": 12,
+      "amount": 24999,
+      "hasInterest": false
+    },
+    "shipping": {
+      "free": true,
+      "deliveryTime": "mañana"
+    },
+    "stock": 15,
+    "condition": "Nuevo",
+    "soldQuantity": 1258,
+    "seller": "Samsung Oficial",
+    "images": [
+      "https://http2.mlstatic.com/D_NQ_NP_2X_800035-MLA81367078349_122024-F.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_832248-MLA81366749957_122024-F.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_621964-MLA81364948571_122024-F.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_777643-MLA75395342152_042024-F.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_725539-MLA80825742603_112024-F.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_780712-MLA81099188364_122024-F.webp"
+    ],
+    "bestSeller": true,
+    "hasFreeReturn": true
+  }
+]
