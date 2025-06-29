@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import type { Product } from './types/Product';
 import Header from './components/Header'; // <-- IMPORTANTE: importalo así
 import ProductGallery from './components/ProductGallery';
@@ -6,44 +7,47 @@ import ProductInfo from './components/ProductInfo';
 import ProductSkeleton from './components/ProductSkeleton';
 import PaymentMethods from './components/PaymentMethods';
 
-const mockProduct = {
-  id: 'MLC34729758',
-  title: 'Teléfono Celular Samsung Galaxy A55 5g 128 Gb Azul Oscuro',
-  price: 299990,
-  installments: {
-    quantity: 12,
-    amount: 24999,
-    hasInterest: false,
-  },
-  shipping: {
-    free: true,
-    deliveryTime: 'mañana',
-  },
-  stock: 15,
-  condition: 'Nuevo',
-  soldQuantity: 1258,
-  seller: 'Samsung Oficial',
-  images: [
-    'https://http2.mlstatic.com/D_NQ_NP_2X_800035-MLA81367078349_122024-F.webp',
-    'https://http2.mlstatic.com/D_NQ_NP_2X_832248-MLA81366749957_122024-F.webp',
-    'https://http2.mlstatic.com/D_NQ_NP_2X_621964-MLA81364948571_122024-F.webp',
-    'https://http2.mlstatic.com/D_NQ_NP_2X_777643-MLA75395342152_042024-F.webp',
-    'https://http2.mlstatic.com/D_NQ_NP_2X_725539-MLA80825742603_112024-F.webp',
-    'https://http2.mlstatic.com/D_NQ_NP_2X_780712-MLA81099188364_122024-F.webp',
-  ],
-  isBestSeller: true,
-  hasFreeReturn: true,
-};
-
 export default function ProductDetailPage() {
+  const { id } = useParams<{ id: string }>();
   const [product, setProduct] = useState<Product | null>(null);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [quantity, setQuantity] = useState(1);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const timer = setTimeout(() => setProduct(mockProduct), 500);
-    return () => clearTimeout(timer);
-  }, []);
+    if (!id) return;
+    setLoading(true);
+    fetch(`http://localhost:8080/api/products/${id}`, {
+      headers: { 'Content-Type': 'application/json' }
+    })
+      .then(res => {
+        if (!res.ok) throw new Error('No se encontró el producto');
+        return res.json();
+      })
+      .then(data => {
+        setProduct(data);
+        setLoading(false);
+      })
+      .catch(err => {
+        setError(err + 'No se pudo cargar el producto');
+        setLoading(false);
+      });
+  }, [id]);
+
+  if (loading) return (
+    <>
+      <Header />
+      <ProductSkeleton />
+    </>
+  );
+  if (error) return (
+    <>
+      <Header />
+      <div className="max-w-6xl mx-auto p-4 text-red-600">{error}</div>
+    </>
+  );
+  if (!product) return null;
 
   const formatPrice = (value: number) => new Intl.NumberFormat('es-CL', {
     style: 'currency',
