@@ -1,10 +1,13 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ProductDetailPage from './ProductDetailPage.tsx';
 
 function App() {
   return (
-    <div className="font-sans">
-      <ProductDetailPage />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/productos/:id" element={<ProductDetailPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
