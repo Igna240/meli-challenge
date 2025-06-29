@@ -1,0 +1,20 @@
+version: "3.9"
+services:
+  backend:
+    build: ./item-service
+    ports:
+      - "8080:8080"
+    # Opcional: si tu back usa variables de entorno (BD, etc.)
+    # environment:
+    #   - SPRING_PROFILES_ACTIVE=dev
+    #   - ALGO=valor
+
+  frontend:
+    build: ./meli-item-frontend
+    ports:
+      - "3000:5713" # O el puerto que uses en el Dockerfile de tu front
+    depends_on:
+      - backend
+    # Si tu front necesita saber el host del back:
+    # environment:
+    #   - VITE_BACKEND_URL=http://backend:8080
