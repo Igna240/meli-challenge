@@ -1,4 +1,4 @@
-import ProductDetailPage from './pages/ProductDetailPage.tsx';
+import ProductDetailPage from './ProductDetailPage.tsx';
 
 function App() {
   return (
