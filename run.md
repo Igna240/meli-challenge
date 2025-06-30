@@ -1,35 +1,33 @@
-# run.md – Guía rápida de ejecución 🚀
+# run.md – Quick Start Guide 🚀
 
-## Prerrequisitos
+## Prerequisites
 
-* **Docker Engine** 24 o superior
-* **Git**
+  * **Docker Engine** 24 or higher
+  * **Git**
 
----
+-----
 
-## 1. Clonar el repositorio
+## 1\. Clone the repository
 
 ```bash
 git clone https://github.com/Igna240/meli-challenge.git
 cd meli-challenge
 ```
 
----
+-----
 
-## 2. Construir y levantar con Docker Compose
+## 2\. Build and run with Docker Compose
 
 ```bash
 docker compose up --build
 ```
 
-* Agregá `-d` para ejecutar en segundo plano:
+  * Add `-d` to run in the background:
+    ```bash
+    docker compose up --build -d
+    ```
+  * The first run may take a few minutes while images are downloaded and the project is compiled.
 
-  ```bash
-  docker compose up --build -d
-  ```
+-----
 
-* La primera ejecución puede tardar unos minutos mientras se descargan imágenes y se compila el proyecto.
-
----
-
-¡Listo! Con estos pasos tenés el proyecto clonado, los contenedores levantados y la app corriendo. 🎉
+That's it\! With these steps, you have the project cloned, the containers up, and the app running. 🎉
