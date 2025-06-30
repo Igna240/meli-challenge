@@ -1,5 +1,6 @@
 package com.challenge.meli.itemservice.service.impl;
 
+import com.challenge.meli.itemservice.exception.ProductNotFoundException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -80,7 +81,8 @@ class ProductServiceImplTest {
     void getProductById_shouldReturnNull_whenProductNotFound() {
         when(productRepository.findById("NO_EXISTE")).thenReturn(Optional.empty());
 
-        ProductDTO dto = productService.getProductById("NO_EXISTE");
-        assertNull(dto);
+        assertThrows(ProductNotFoundException.class, () -> {
+            productService.getProductById("NO_EXISTE");
+        });
     }
 }
