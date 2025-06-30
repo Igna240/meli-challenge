@@ -22,9 +22,14 @@ The backend exposes `/products/{id}` and the frontend consumes it. Both run in i
   - **Docker Compose**: Unifies startup (`docker compose up --build`) and meets portability requirements.
   - **Jacoco** integrated into `pom.xml` + `mvn verify` generates a coverage report.
 
-## 4\. Challenges and How I Solved Them
+Aquí tienes la traducción de esa sección al inglés:
 
-  - **Validating IDs without overcomplicating logic** → Used a regular expression and a 400 exception on failure.
-  - **Consistent 404 error** → A global handler converts a repository absence into a REST response.
-  - **Syncing FE and BE on different ports** → Used a proxy in `vite.config.ts`.
-  - **Limited time** → Prioritized TDD in the domain layer.
+## 4\. General Challenges and Solutions
+
+| # | Challenge | Solution |
+|---|---|---|
+| 1 | **Seamless communication between Front-End and API** | Proxy in `vite.config.ts` + Docker Compose internal network → no CORS or hard-coded URLs. |
+| 2 | **Modularizing the React interface** | Small components (`Gallery`, `Summary`, `PurchaseCard`, etc.) and custom hooks (`useProduct`) for scalable code. |
+| 3 | **Consistent error handling** | `@RestControllerAdvice` returns 400/404/500 JSON on the backend; `ErrorBoundary` and toasts display readable messages on the frontend. |
+| 4 | **Single-command startup** | `docker-compose.yml` + steps in `run.md` → `docker compose up --build` starts everything. |
+| 5 | **Minimum quality coverage** | JUnit 5 + MockMvc (backend) and React Testing Library (frontend); Jacoco/Vitest generate reports ≥ 80%. |
