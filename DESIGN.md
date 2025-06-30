@@ -32,9 +32,4 @@ Jacoco reporta **82 % global** (`target/site/jacoco/index.html`).
 - **Validar IDs sin sobrecargar lógica** → expresión regular y excepción 400 si falla.
 - **Error 404 coherente** → handler global convierte ausencia en repo a respuesta REST.
 - **Sincronizar FE y BE en distintos puertos** → proxy en `vite.config.ts`.
-- **Tiempo limitado** → prioricé TDD en la capa de dominio y dejé TODOs para features extra.
-
-## 6. Próximos pasos
-- Persistencia en Postgres + Flyway.
-- Observabilidad (Micrometer + Prometheus).
-- Pipeline CI en GitHub Actions ejecutando tests y publicando reporte Jacoco.
+- **Tiempo limitado** → prioricé TDD en la capa de dominio
