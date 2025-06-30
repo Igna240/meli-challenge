@@ -11,7 +11,7 @@
 
 ```bash
 git clone https://github.com/Igna240/meli-challenge.git
-cd <meli-challenge>
+cd meli-challenge
 ```
 
 ---

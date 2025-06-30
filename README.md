@@ -49,10 +49,17 @@ IDNOTEXIST
 1. Ejecutá los tests del frontend:
     ```bash
     cd meli-item-frontend
+    npm install
     npm run test
     ```
 2. Ejecuta el reporte de cobertura:
     ```
+    npm run coverage
+    ```
+#### O dentro del docker container del frontend
+
+    ```
+    npm run test
     npm run coverage
     ```
 
