@@ -1,6 +1,7 @@
 package com.challenge.meli.itemservice.service.impl;
 
 import com.challenge.meli.itemservice.dto.ProductDTO;
+import com.challenge.meli.itemservice.exception.ProductNotFoundException;
 import com.challenge.meli.itemservice.model.Product;
 import com.challenge.meli.itemservice.repository.ProductRepository;
 import com.challenge.meli.itemservice.service.ProductService;
@@ -18,7 +19,7 @@ public class ProductServiceImpl implements ProductService {
     public ProductDTO getProductById(String id) {
         Optional<Product> productOpt = productRepository.findById(id);
         if (productOpt.isEmpty()) {
-            return null;
+            throw new ProductNotFoundException(id);
         }
         Product product = productOpt.get();
         return ProductDTO.builder()
