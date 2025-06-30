@@ -1,35 +1,41 @@
-# Informe de Diseño – Desafío Técnico “Productos API”
+Aquí tienes la traducción completa del informe de diseño, manteniendo el formato original.
 
-## 1. Introducción
-Este proyecto entrega un **backend Spring Boot**, un **frontend React** y un **docker-compose** para levantar todo con un solo comando. Permite listar y consultar productos por ID.
+# Design Report – "Products API" Technical Challenge
 
-## 2. Arquitectura
+## 1\. Introduction
+
+This project provides a **Spring Boot backend**, a **React frontend**, and a **docker-compose** file to run everything with a single command. It allows listing and querying products by ID.
+
+## 2\. Architecture
 
 ```mermaid
 graph TD
   FE[Frontend<br/>React + Vite] -->|REST| BE[Backend<br/>Spring Boot]
-  BE --> MEM[Repositorio en memoria<br/>products.json]
-  ```
-El backend expone `/productos/{id}` y el frontend lo consume. Ambos corren en contenedores independientes.
+  BE --> MEM[In-memory Repository<br/>products.json]
+```
 
+The backend exposes `/products/{id}` and the frontend consumes it. Both run in independent containers.
 
-## 3. Elecciones de diseño
-- **Spring Boot 3 + Maven**: rapidez de desarrollo y familiaridad con el ecosistema.
-- **Repositorio en memoria**: evita dependencias externas → setup < 30 s.
-- **Manejo de errores**: `ProductNotFoundException` + `@RestControllerAdvice` ⇒ todas las respuestas de error son JSON uniformes.
-- **Docker Compose**: unifica arranque (`docker compose up --build`) y cumple con los requisitos de portabilidad.
-- **Jacoco** integrado en `pom.xml` + `mvn verify` genera reporte de cobertura.
+## 3\. Design Choices
 
-## 4. Pruebas y cobertura
-| Tipo       | Framework | Archivos cubiertos | Cobertura |
-|------------|-----------|--------------------|-----------|
-| Unitario   | JUnit 5   | Service, Repository | 93 % |
-| Integración| Spring MockMvc | Controller + ErrorHandler | 81 % |
+  - **Spring Boot 3 + Maven**: For development speed and familiarity with the ecosystem.
+  - **In-memory repository**: Avoids external dependencies → setup \< 30s.
+  - **Error handling**: `ProductNotFoundException` + `@RestControllerAdvice` ⇒ all error responses are uniform JSON.
+  - **Docker Compose**: Unifies startup (`docker compose up --build`) and meets portability requirements.
+  - **Jacoco** integrated into `pom.xml` + `mvn verify` generates a coverage report.
 
-Jacoco reporta **82 % global** (`target/site/jacoco/index.html`).
+## 4\. Tests and Coverage
 
-## 5. Desafíos y cómo los resolví
-- **Validar IDs sin sobrecargar lógica** → expresión regular y excepción 400 si falla.
-- **Error 404 coherente** → handler global convierte ausencia en repo a respuesta REST.
-- **Sincronizar FE y BE en distintos puertos** → proxy en `vite.config.ts`.
-- **Tiempo limitado** → prioricé TDD en la capa de dominio
+| Type | Framework | Files Covered | Coverage |
+|---|---|---|---|
+| Unit | JUnit 5 | Service, Repository | 93% |
+| Integration| Spring MockMvc | Controller + ErrorHandler | 81% |
+
+Jacoco reports **82% overall** (`target/site/jacoco/index.html`).
+
+## 5\. Challenges and How I Solved Them
+
+  - **Validating IDs without overcomplicating logic** → Used a regular expression and a 400 exception on failure.
+  - **Consistent 404 error** → A global handler converts a repository absence into a REST response.
+  - **Syncing FE and BE on different ports** → Used a proxy in `vite.config.ts`.
+  - **Limited time** → Prioritized TDD in the domain layer.

@@ -1,21 +1,20 @@
-# Desafío Técnico – Productos API
+# Technical Challenge – Products API
 
-> **¿Cómo levantar el proyecto?**  
-> 👉 Lee el archivo [run.md](./run.md) para instrucciones paso a paso con Docker Compose.
+> **How to run the project?** \> 👉 Read the [run.md](https://www.google.com/search?q=./run.md) file for step-by-step instructions with Docker Compose.
 
-Este repositorio contiene la API de productos…
+This repository contains the Products API…
 
-## Probar la aplicación
+## Testing the application
 
-Cuando el log muestre algo similar a `Listening on http://0.0.0.0:3000`, abrí tu navegador y visitá:
+When the log shows something similar to `Listening on http://0.0.0.0:3000`, open your browser and visit:
 
 ```
 http://localhost:3000/productos/MLC34729758
 ```
 
-Deberías visualizar la página de detalles del producto.
+You should see the product details page.
 
-Otros ids para probar
+Other IDs to test
 
 ```
 MLC1027172690
@@ -23,50 +22,51 @@ MLC42453668
 IDNOTEXIST
 ```
 
----
+-----
 
-## Validación de cobertura de código (Code Coverage)
+## Code Coverage Validation
 
-### Para ver el porcentaje de cobertura de código del backend:
+### To see the backend code coverage percentage:
 
-1. Ejecutá los tests del backend:
+1.  Run the backend tests:
     ```bash
     cd item-service
     mvn clean test jacoco:report
     ```
-2. Abrí el reporte de cobertura en tu navegador:
+2.  Open the coverage report in your browser:
     ```
     target/site/jacoco/index.html
     ```
-   O, si preferís, desde la terminal en Mac:
-    ```bash
-    open target/site/jacoco/index.html
-    ```
-3. El reporte mostrará el porcentaje total de coverage y el detalle por clase/paquete.
 
-### Para ver el porcentaje de cobertura de código del frontend:
+Or, if you prefer, from the terminal on Mac:
+` bash open target/site/jacoco/index.html  `
+3\.  The report will show the total coverage percentage and the detail by class/package.
 
-1. Ejecutá los tests del frontend:
+### To see the frontend code coverage percentage:
+
+1.  Run the frontend tests:
     ```bash
     cd meli-item-frontend
     npm install
     npm run test
     ```
-2. Ejecuta el reporte de cobertura:
+2.  Run the coverage report:
     ```
     npm run coverage
     ```
-#### O dentro del docker container del frontend
 
-    ```
-    npm run test
-    npm run coverage
-    ```
+#### Or inside the frontend docker container
 
----
+````
+```
+npm run test
+npm run coverage
+```
+````
 
-## URLs importantes
+-----
 
-- **Backend API:** [http://localhost:8080/api/products/MLC34729758](http://localhost:8080/api/products/MLC34729758)
-- **Frontend:** [http://localhost:3000/](http://localhost:3000/)
+## Important URLs
 
+  - **Backend API:** [http://localhost:8080/api/products/MLC34729758](https://www.google.com/search?q=http://localhost:8080/api/products/MLC34729758)
+  - **Frontend:** [http://localhost:3000/](https://www.google.com/search?q=http://localhost:3000/)
