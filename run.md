@@ -32,16 +32,4 @@ docker compose up --build
 
 ---
 
-## 3. Probar la aplicación
-
-Cuando el log muestre algo similar a `Listening on http://0.0.0.0:3000`, abrí tu navegador y visitá:
-
-```
-http://localhost:3000/productos/MLC34729758
-```
-
-Deberías visualizar la página de detalles del producto.
-
----
-
 ¡Listo! Con estos pasos tenés el proyecto clonado, los contenedores levantados y la app corriendo. 🎉
