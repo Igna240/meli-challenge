@@ -1,6 +1,7 @@
 # Technical Challenge – Products API
 
-> **How to run the project?** \> 👉 Read the [run.md](https://www.google.com/search?q=./run.md) file for step-by-step instructions with Docker Compose.
+> **How to run the project?**
+> 👉 Read the [run.md](./run.md) file for step-by-step instructions with Docker Compose.
 
 This repository contains the Products API…
 
@@ -68,5 +69,5 @@ npm run coverage
 
 ## Important URLs
 
-  - **Backend API:** [http://localhost:8080/api/products/MLC34729758](https://www.google.com/search?q=http://localhost:8080/api/products/MLC34729758)
-  - **Frontend:** [http://localhost:3000/](https://www.google.com/search?q=http://localhost:3000/)
+  - **Backend API:** [http://localhost:8080/api/products/MLC34729758](http://localhost:8080/api/products/MLC34729758)
+  - **Frontend:** [http://localhost:3000/productos/MLC34729758](http://localhost:3000/productos/MLC34729758)

@@ -1,5 +1,3 @@
-Aquí tienes la traducción completa del informe de diseño, manteniendo el formato original.
-
 # Design Report – "Products API" Technical Challenge
 
 ## 1\. Introduction
@@ -24,16 +22,7 @@ The backend exposes `/products/{id}` and the frontend consumes it. Both run in i
   - **Docker Compose**: Unifies startup (`docker compose up --build`) and meets portability requirements.
   - **Jacoco** integrated into `pom.xml` + `mvn verify` generates a coverage report.
 
-## 4\. Tests and Coverage
-
-| Type | Framework | Files Covered | Coverage |
-|---|---|---|---|
-| Unit | JUnit 5 | Service, Repository | 93% |
-| Integration| Spring MockMvc | Controller + ErrorHandler | 81% |
-
-Jacoco reports **82% overall** (`target/site/jacoco/index.html`).
-
-## 5\. Challenges and How I Solved Them
+## 4\. Challenges and How I Solved Them
 
   - **Validating IDs without overcomplicating logic** → Used a regular expression and a 400 exception on failure.
   - **Consistent 404 error** → A global handler converts a repository absence into a REST response.
