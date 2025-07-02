@@ -21,6 +21,8 @@ public class Product {
     private List<String> images;
     private boolean bestSeller;
     private boolean hasFreeReturn;
+    private boolean hasDiscount;
+    private int percentageDiscount;
 
     @Data
     public static class Installments {
