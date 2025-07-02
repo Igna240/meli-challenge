@@ -48,6 +48,7 @@ public class ProductServiceImpl implements ProductService {
                 .images(product.getImages())
                 .isBestSeller(product.isBestSeller())
                 .hasFreeReturn(product.isHasFreeReturn())
+                .discountPrice(product.isHasDiscount()?product.getPrice() * (100 - product.getPercentageDiscount()) / 100: 0)
                 .build();
     }
 }

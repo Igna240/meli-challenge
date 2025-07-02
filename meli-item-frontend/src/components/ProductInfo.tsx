@@ -31,7 +31,27 @@ const ProductInfo = ({
           </div>
         )}
 
-        <p className="text-4xl font-light mt-4">{formatPrice(product.price)}</p>
+        {/* PRECIOS: Original tachado y descuento si corresponde */}
+        <div className="flex items-center gap-3 mt-4">
+          {product.discountPrice && product.discountPrice > 0
+            ? (
+              <>
+                <span className="text-2xl text-gray-400 line-through">
+                  {formatPrice(product.price)}
+                </span>
+                <span className="text-4xl font-light text-red-600">
+                  {formatPrice(product.discountPrice)}
+                </span>
+              </>
+            )
+            : (
+              <span className="text-4xl font-light">
+                {formatPrice(product.price)}
+              </span>
+            )
+          }
+        </div>
+
         <p className="text-base mt-1">
           en {product.installments.quantity}x {formatPrice(product.installments.amount)}{' '}
           {product.installments.hasInterest ? 'con interés' : 'sin interés'}

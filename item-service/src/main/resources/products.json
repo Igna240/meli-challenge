@@ -25,7 +25,9 @@
       "https://http2.mlstatic.com/D_NQ_NP_2X_780712-MLA81099188364_122024-F.webp"
     ],
     "bestSeller": true,
-    "hasFreeReturn": true
+    "hasFreeReturn": true,
+    "hasDiscount": true,
+    "percentageDiscount" : 10
   },
   {
     "id": "MLC1027172690",
@@ -53,7 +55,9 @@
       "https://http2.mlstatic.com/D_NQ_NP_2X_807198-MLA71835624363_092023-F.webp"
     ],
     "bestSeller": true,
-    "hasFreeReturn": true
+    "hasFreeReturn": true,
+    "hasDiscount": false,
+    "percentageDiscount" : 10
   },
   {
     "id": "MLC42453668",
@@ -77,6 +81,8 @@
       "https://http2.mlstatic.com/D_NQ_NP_2X_695854-MLA80072252980_102024-F.webp"
     ],
     "bestSeller": false,
-    "hasFreeReturn": true
+    "hasFreeReturn": true,
+    "hasDiscount": true,
+    "percentageDiscount" : 10
   }
 ]

@@ -8,11 +8,12 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@Builder(toBuilder = true)
 public class ProductDTO {
     private String id;
     private String title;
     private int price;
+    private int discountPrice;
     private InstallmentsDTO installments;
     private ShippingDTO shipping;
     private int stock;

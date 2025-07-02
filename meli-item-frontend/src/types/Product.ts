@@ -2,6 +2,7 @@ export interface Product {
   id: string;
   title: string;
   price: number;
+  discountPrice?: number | null;
   installments: {
     quantity: number;
     amount: number;
