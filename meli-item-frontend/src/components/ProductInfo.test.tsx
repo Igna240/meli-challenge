@@ -11,6 +11,7 @@ const mockProduct: Product = {
   id: 'MLC34729758',
   title: 'Teléfono Celular Samsung Galaxy A55 5g 128 Gb Azul Oscuro',
   price: 299990,
+  discountPrice: 0, // importante: 0 = sin descuento
   installments: {
     quantity: 12,
     amount: 24999,
@@ -128,5 +129,19 @@ describe('<ProductInfo />', () => {
       />
     );
     expect(screen.getByText(/con interés/i)).toBeInTheDocument();
+  });
+
+  it('muestra solo el precio original cuando discountPrice es 0', () => {
+    render(
+      <ProductInfo
+        product={{ ...mockProduct, discountPrice: 0 }}
+        quantity={1}
+        setQuantity={() => {}}
+        formatPrice={mockFormatPrice}
+      />
+    );
+    expect(screen.getByText('$299.990')).toBeInTheDocument();
+    // El precio de descuento no debe aparecer
+    expect(screen.queryByText('$0')).not.toBeInTheDocument();
   });
 });
